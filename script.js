@@ -15,4 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // Add fade-in animation on scroll
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => {
+        section.classList.add("fade-out");
+        observer.observe(section);
+    });
 });
